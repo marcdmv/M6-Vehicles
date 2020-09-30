@@ -8,7 +8,7 @@ public abstract class Vehicle {
 	protected String plate;
 	protected String brand;
 	protected String color;
-	protected List<Wheel> wheels = new ArrayList<Wheel>();
+	protected List<Wheel> wheels = new ArrayList<>();
 
 	public Vehicle(String plate, String brand, String color) {
 		this.plate = plate;

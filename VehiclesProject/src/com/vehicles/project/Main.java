@@ -18,104 +18,61 @@ public class Main {
         }
 
         Scanner plateInput = new Scanner(System.in);
-        System.out.println("Introduzca la matrícula del vehículo '" + type + "':");
+        System.out.println("Introduzca la matrícula del vehículo de tipo '" + type + "':");
         plate = plateInput.nextLine();
+        Vehicle.checkPlate(plate);
 
         Scanner brandInput = new Scanner(System.in);
-        System.out.println("Introduzca la marca del vehículo '" + type + "':");
+        System.out.println("Introduzca la marca del vehículo de tipo '" + type + "':");
         brand = brandInput.nextLine();
         Scanner colorInput = new Scanner(System.in);
-        System.out.println("Introduzca el color del vehículo '" + type + "':");
+        System.out.println("Introduzca el color del vehículo de tipo '" + type + "':");
         color = colorInput.nextLine();
 
         Car myCar;
         Bike myBike;
+        List<String> lados = Arrays.asList("derecho","izquierdo");
+        List<String> lados2 = Arrays.asList("delantera","trasera");
+
         if (type.toLowerCase().equals("coche")) {
-            Car.checkPlate(plate);
             myCar = new Car(plate,brand,color);
-
-            // FASE 1.3
-            String rightFrontWheelBrand;
-            Scanner rightFrontWheelBrandInput = new Scanner(System.in);
-            System.out.println("Introduzca la marca de la rueda derecha delantera:");
-            rightFrontWheelBrand = rightFrontWheelBrandInput.nextLine();
-            double rightFrontWheelDiameter;
-            Scanner rightFrontWheelDiameterInput = new Scanner(System.in);
-            System.out.println("Introduzca el diámetro de la rueda derecha delantera:");
-            rightFrontWheelDiameter = rightFrontWheelDiameterInput.nextDouble();
-            Wheel frontRightWheel = new Wheel(rightFrontWheelBrand,rightFrontWheelDiameter);
-
-            String leftFrontWheelBrand;
-            Scanner leftFrontWheelBrandInput = new Scanner(System.in);
-            System.out.println("Introduzca la marca de la rueda izquierda delantera:");
-            leftFrontWheelBrand = leftFrontWheelBrandInput.nextLine();
-            double leftFrontWheelDiameter;
-            Scanner leftFrontWheelDiameterInput = new Scanner(System.in);
-            System.out.println("Introduzca el diámetro de la rueda izquierda delantera:");
-            leftFrontWheelDiameter = leftFrontWheelDiameterInput.nextDouble();
-            Wheel frontLeftWheel = new Wheel(leftFrontWheelBrand,leftFrontWheelDiameter);
-
-            List<Wheel> frontWheels = new ArrayList<Wheel>();
-            frontWheels.add(frontRightWheel);
-            frontWheels.add(frontLeftWheel);
-
-            String rightBackWheelBrand;
-            Scanner rightBackWheelBrandInput = new Scanner(System.in);
-            System.out.println("Introduzca la marca de la rueda derecha posterior:");
-            rightBackWheelBrand = rightBackWheelBrandInput.nextLine();
-            double rightBackWheelDiameter;
-            Scanner rightBackWheelDiameterInput = new Scanner(System.in);
-            System.out.println("Introduzca el diámetro de la rueda derecha posterior:");
-            rightBackWheelDiameter = rightBackWheelDiameterInput.nextDouble();
-            Wheel backRightWheel = new Wheel(rightBackWheelBrand,rightBackWheelDiameter);
-            String leftBackWheelBrand;
-            Scanner leftBackWheelBrandInput = new Scanner(System.in);
-            System.out.println("Introduzca la marca de la rueda izquierda trasera:");
-            leftBackWheelBrand = leftBackWheelBrandInput.nextLine();
-            double leftBackWheelDiameter;
-            Scanner leftBackWheelDiameterInput = new Scanner(System.in);
-            System.out.println("Introduzca el diámetro de la rueda izquierda trasera:");
-            leftBackWheelDiameter = leftBackWheelDiameterInput.nextDouble();
-            Wheel backLeftWheel = new Wheel(leftBackWheelBrand,leftBackWheelDiameter);
-            List<Wheel> backWheels = new ArrayList<Wheel>();
-            backWheels.add(backRightWheel);
-            backWheels.add(backLeftWheel);
-
+            List<Wheel> frontWheels = new ArrayList<>();
+            List<Wheel> backWheels = new ArrayList<>();
+            for (String lado2 : lados2){
+                for (String lado : lados) {
+                    String wheelBrand;
+                    Scanner wheelBrandInput = new Scanner(System.in);
+                    System.out.println("Introduzca la marca de la rueda " + lado2 + " del lado " + lado +":");
+                    wheelBrand = wheelBrandInput.nextLine();
+                    double wheelDiameter;
+                    Scanner wheelDiameterInput = new Scanner(System.in);
+                    System.out.println("Y ahora introduzca su diámetro:");
+                    wheelDiameter = wheelDiameterInput.nextDouble();
+                    Wheel wheel = new Wheel(wheelBrand,wheelDiameter);
+                    if (lado2.equals("delantera")) { frontWheels.add(wheel); }
+                    else if (lado2.equals("trasera")) { backWheels.add(wheel); }
+                }
+            }
             myCar.addWheels(frontWheels,backWheels, type);
         }
         else if (type.toLowerCase().equals("bicicleta")) {
-            Bike.checkPlate(plate);
             myBike = new Bike(plate,brand,color);
-
-            // FASE 3
-            String frontWheelBrand;
-            Scanner frontWheelBrandInput = new Scanner(System.in);
-            System.out.println("Introduzca la marca de la rueda delantera:");
-            frontWheelBrand = frontWheelBrandInput.nextLine();
-            double frontWheelDiameter;
-            Scanner frontWheelDiameterInput = new Scanner(System.in);
-            System.out.println("Introduzca el diámetro de la rueda delantera:");
-            frontWheelDiameter = frontWheelDiameterInput.nextDouble();
-            Wheel frontWheel = new Wheel(frontWheelBrand,frontWheelDiameter);
-
-            List<Wheel> frontWheels = new ArrayList<Wheel>();
-            frontWheels.add(frontWheel);
-
-            String backWheelBrand;
-            Scanner backWheelBrandInput = new Scanner(System.in);
-            System.out.println("Introduzca la marca de la rueda trasera:");
-            backWheelBrand = backWheelBrandInput.nextLine();
-            double backWheelDiameter;
-            Scanner rightBackWheelDiameterInput = new Scanner(System.in);
-            System.out.println("Introduzca el diámetro de la rueda derecha trasera:");
-            backWheelDiameter = rightBackWheelDiameterInput.nextDouble();
-            Wheel backWheel = new Wheel(backWheelBrand,backWheelDiameter);
-            List<Wheel> backWheels = new ArrayList<Wheel>();
-            backWheels.add(backWheel);
-
+            List<Wheel> frontWheels = new ArrayList<>();
+            List<Wheel> backWheels = new ArrayList<>();
+            for (String lado2 : lados2) {
+                String wheelBrand;
+                Scanner wheelBrandInput = new Scanner(System.in);
+                System.out.println("Introduzca la marca de la rueda " + lado2 + ":");
+                wheelBrand = wheelBrandInput.nextLine();
+                double wheelDiameter;
+                Scanner wheelDiameterInput = new Scanner(System.in);
+                System.out.println("Y ahora introduzca su diámetro:");
+                wheelDiameter = wheelDiameterInput.nextDouble();
+                Wheel wheel = new Wheel(wheelBrand, wheelDiameter);
+                if (lado2.equals("delantera")) { frontWheels.add(wheel); }
+                else if (lado2.equals("trasera")) { backWheels.add(wheel); }
+            }
             myBike.addWheels(frontWheels,backWheels,type);
         }
     }
 }
-
-
