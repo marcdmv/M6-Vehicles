@@ -36,7 +36,9 @@ public class Car extends Vehicle {
 		}
 
 		addTwoWheels(frontWheels);
+		System.out.println("Se han añadido las ruedas delanteras correctamente.");
 		addTwoWheels(backWheels);
+		System.out.println("Se han añadido las ruedas traseras correctamente.");
 	}
 
 	public void addTwoWheels(List<Wheel> wheels) throws Exception {

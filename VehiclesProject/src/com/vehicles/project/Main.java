@@ -13,11 +13,10 @@ public class Main {
         String brand;
         String color;
         Scanner typeInput = new Scanner(System.in);
-        System.out.println("Qué tipo de vehículo quiere crear? Coche/Bicicleta:");
+        System.out.println("Qué tipo de vehículo quiere crear? \n" +
+                "1. Coche \n" +
+                "2. Bicicleta");
         type = typeInput.nextLine().toLowerCase();
-        if (!type.equals("coche") && !type.equals("bicicleta")) {
-            throw new Exception("El tipo de vehículo no es correcto");
-        }
 
         Scanner plateInput = new Scanner(System.in);
         System.out.println("Introduzca la matrícula del vehículo:");
@@ -31,13 +30,18 @@ public class Main {
         System.out.println("Introduzca el color del vehículo:");
         color = colorInput.nextLine();
 
-        if (type.equals("coche")) {
+        if (type.equals("1")) {
             Car myCar = new Car(plate,brand,color);
+            System.out.println("Chásis del Coche creado correctamente.");
             addWheelsVehicle(myCar);
         }
-        else {
+        else if (type.equals("2")){
             Bike myBike = new Bike(plate,brand,color);
+            System.out.println("Cuadro de la Bicicleta creado correctamente.");
             addWheelsVehicle(myBike);
+        }
+        else {
+            throw new Exception("El tipo de vehículo no es correcto");
         }
     }
 }
