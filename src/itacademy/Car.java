@@ -1,9 +1,6 @@
 package itacademy;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Car extends Vehicle {
 
@@ -28,7 +25,12 @@ public class Car extends Vehicle {
 				double wheelDiameter;
 				Scanner wheelDiameterInput = new Scanner(System.in);
 				System.out.println("Y ahora introduzca su diámetro (entre 0.4 y 4):");
-				wheelDiameter = wheelDiameterInput.nextDouble();
+				try {
+					wheelDiameter = wheelDiameterInput.nextDouble();
+				}
+				catch (InputMismatchException e){
+					throw new Exception("El diámetro tiene que ser numérico. Error: " + e);
+				}
 				Wheel wheel = new Wheel(wheelBrand,wheelDiameter);
 				if (lado2.equals("delantera")) { frontWheels.add(wheel); }
 				else if (lado2.equals("trasera")) { backWheels.add(wheel); }
