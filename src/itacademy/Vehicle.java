@@ -25,8 +25,7 @@ public class Vehicle {
 			if (Character.isDigit(plateChar)) letters++;
 			if (Character.isLetter(plateChar)) chars++;
 		}
-		if (letters != 4) throw new Exception("La matrícula debe contener 4 números");
-		if (chars < 2 || chars > 3)	throw new Exception("La matrícula debe tener 2 o 3 letras");
+		if (letters != 4 || chars < 2 || chars > 3) throw new Exception("La matrícula debe contener 4 números y 2/3 letras");
 	}
 	public void addWheels() throws Exception{
 
