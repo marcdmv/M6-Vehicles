@@ -39,6 +39,7 @@ public class Bike extends Vehicle {
 
 		addOneWheel(frontWheels);
 		addOneWheel(backWheels);
+		System.out.println("Vehículo Bicicleta creado correctamente.");
 	}
 
 	public void addOneWheel(List<Wheel> wheels) throws Exception {
