@@ -1,4 +1,4 @@
-package com.vehicles.project;
+package itacademy;
 
 public class Wheel {
 	protected String brand;

@@ -1,4 +1,4 @@
-package com.vehicles.project;
+package itacademy;
 
 import java.util.ArrayList;
 import java.util.List;

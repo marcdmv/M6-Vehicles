@@ -1,4 +1,4 @@
-package com.vehicles.project;
+package itacademy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,7 +27,7 @@ public class Car extends Vehicle {
 				wheelBrand = wheelBrandInput.nextLine();
 				double wheelDiameter;
 				Scanner wheelDiameterInput = new Scanner(System.in);
-				System.out.println("Y ahora introduzca su diámetro:");
+				System.out.println("Y ahora introduzca su diámetro (entre 0.4 y 4):");
 				wheelDiameter = wheelDiameterInput.nextDouble();
 				Wheel wheel = new Wheel(wheelBrand,wheelDiameter);
 				if (lado2.equals("delantera")) { frontWheels.add(wheel); }

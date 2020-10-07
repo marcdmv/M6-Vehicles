@@ -1,4 +1,4 @@
-package com.vehicles.project;
+package itacademy;
 import java.util.*;
 
 public class Main {
@@ -17,6 +17,9 @@ public class Main {
                 "1. Coche \n" +
                 "2. Bicicleta");
         type = typeInput.nextLine().toLowerCase();
+        if (!type.equals("1") & !type.equals("2")) {
+            throw new Exception("El tipo de vehículo no es correcto");
+        }
 
         Scanner plateInput = new Scanner(System.in);
         System.out.println("Introduzca la matrícula del vehículo:");
@@ -35,13 +38,10 @@ public class Main {
             System.out.println("Chásis del Coche creado correctamente.");
             addWheelsVehicle(myCar);
         }
-        else if (type.equals("2")){
+        else {
             Bike myBike = new Bike(plate,brand,color);
             System.out.println("Cuadro de la Bicicleta creado correctamente.");
             addWheelsVehicle(myBike);
-        }
-        else {
-            throw new Exception("El tipo de vehículo no es correcto");
         }
     }
 }
